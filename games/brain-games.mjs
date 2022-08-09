@@ -1,3 +1,7 @@
+import {
+   knowName
+} from "../src/cli.mjs";
+
 export default function game() {
-   console.log("Welcome to the Brain Games!");
+   knowName()
 }
