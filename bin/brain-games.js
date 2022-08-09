@@ -1,4 +1,4 @@
 #!/usr/bin/env node
-import game from "../games/brain-games";
+import game from '../games/brain-games.mjs';
 
-game()
+game();

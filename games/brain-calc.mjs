@@ -1,9 +1,9 @@
 import {
-   question, randomNumber, result, correctAnswer, answerQuestion,
+   question, randomNumber, result, correctAnswer, answerQuestion, knowName,
 } from "../src/cli.mjs";
 
 export default function brainCalc() {
-   const name = knowName()
+   const name = knowName("brain-calc")
    let countRight = 0;
    const arrOfOperators = ["+", "-", "*"]
    for (let i in arrOfOperators) {
@@ -12,19 +12,25 @@ export default function brainCalc() {
       const sum = num1 + num2;
       const decr = num1 - num2;
       const mult = num1 * num2;
-      question("brain-calc", num1, num2, arrOfOperators[i]);
-      let answer = answerQuestion();
-      if (isNaN(answer)) { correctAnswer(answer, arrOfOperators[i] === "+" ? sum : arrOfOperators[i] === "-" ? decr : mult); break; }
+      let answer
       switch (arrOfOperators[i]) {
          case "+":
-            if (+answer === sum) { countRight++; console.log("Correct"); } else { correctAnswer(answer, sum); return }
+            question("brain-calc", `${num1} + ${num2}`);
+            answer = answerQuestion();
+            if (+answer === sum) { countRight++; correctAnswer(true); } else { correctAnswer(false, answer, sum); return }
             break
          case "-":
-            if (+answer === decr) { countRight++; console.log("Correct"); } else { correctAnswer(answer, decr); return }
+            question("brain-calc", `${num1} - ${num2}`);
+            answer = answerQuestion();
+            if (+answer === decr) { countRight++; correctAnswer(true); } else { correctAnswer(false, answer, decr); return }
             break
          case "*":
-            if (+answer === mult) { countRight++; console.log("Correct"); } else { correctAnswer(answer, mult); return }
+            question("brain-calc", `${num1} * ${num2}`);
+            answer = answerQuestion();
+            if (+answer === mult) { countRight++; correctAnswer(true); } else { correctAnswer(false, answer, mult); return }
             break
+         default:
+            correctAnswer(false, answer, arrOfOperators[i] === "+" ? sum : arrOfOperators[i] === "-" ? decr : mult); break;
       }
    }
    result(countRight, name);

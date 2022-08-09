@@ -1,9 +1,9 @@
 import {
-  question, randomNumber, correctAnswer, result, answerQuestion,
+  question, randomNumber, correctAnswer, result, answerQuestion, knowName,
 } from "../src/cli.mjs";
 
 export default function brainEven() {
-  const name = knowName()
+  const name = knowName("brain-even")
   let countRight = 0;
   while (countRight < 3) {
     const num = randomNumber();
@@ -14,15 +14,15 @@ export default function brainEven() {
     }
     if (num % 2 === 0 && answer === "yes") {
       countRight += 1;
-      console.log("Correct!");
+      correctAnswer(true);
     } else if (num % 2 !== 0 && answer === "no") {
       countRight += 1;
-      console.log("Correct!");
+      correctAnswer(true);
     } else if (num % 2 === 0 && answer === "no") {
-      correctAnswer(answer, "yes");
+      correctAnswer(false, answer, "yes");
       break;
     } else if (num % 2 !== 0 && answer === "yes") {
-      correctAnswer(answer, 'no');
+      correctAnswer(false, answer, 'no');
       break;
     }
   }
