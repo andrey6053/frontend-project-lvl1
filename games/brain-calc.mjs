@@ -6,6 +6,7 @@ export default function brainCalc() {
    const name = knowName("brain-calc")
    let countRight = 0;
    const arrOfOperators = ["+", "-", "*"]
+   lose:
    for (let i in arrOfOperators) {
       let num1 = randomNumber();
       let num2 = randomNumber();
@@ -17,17 +18,17 @@ export default function brainCalc() {
          case "+":
             question("brain-calc", `${num1} + ${num2}`);
             answer = answerQuestion();
-            if (+answer === sum) { countRight++; correctAnswer(true); } else { correctAnswer(false, answer, sum); return }
+            if (+answer === sum) { countRight++; correctAnswer(true); } else { correctAnswer(false, answer, sum); break lose }
             break
          case "-":
             question("brain-calc", `${num1} - ${num2}`);
             answer = answerQuestion();
-            if (+answer === decr) { countRight++; correctAnswer(true); } else { correctAnswer(false, answer, decr); return }
+            if (+answer === decr) { countRight++; correctAnswer(true); } else { correctAnswer(false, answer, decr); break lose }
             break
          case "*":
             question("brain-calc", `${num1} * ${num2}`);
             answer = answerQuestion();
-            if (+answer === mult) { countRight++; correctAnswer(true); } else { correctAnswer(false, answer, mult); return }
+            if (+answer === mult) { countRight++; correctAnswer(true); } else { correctAnswer(false, answer, mult); break lose }
             break
          default:
             correctAnswer(false, answer, arrOfOperators[i] === "+" ? sum : arrOfOperators[i] === "-" ? decr : mult); break;

@@ -25,6 +25,6 @@ export const answerQuestion = () => {
    return answer;
 };
 
-export const correctAnswer = (isCorrect = false, userAnswer, correct) => isCorrect ? console.log("Correct") : console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${correct}'.`);
+export const correctAnswer = (isCorrect = false, userAnswer, correct) => isCorrect ? console.log("Correct!") : console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${correct}'.`);
 
 export const result = (count, name) => (count === 3 ? console.log(`Congratulations, ${name}!`) : console.log(`Let's try again, ${name}!`));
