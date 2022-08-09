@@ -1,9 +1,9 @@
 import {
-  knowName, question, randomNumber, correctAnswer, result, answerQuestion,
-} from "./cli.mjs";
+  question, randomNumber, correctAnswer, result, answerQuestion,
+} from "../src/cli.mjs";
 
-export default function branEven() {
-  const name = knowName();
+export default function brainEven() {
+  const name = knowName()
   let countRight = 0;
   while (countRight < 3) {
     const num = randomNumber();
@@ -28,5 +28,3 @@ export default function branEven() {
   }
   return result(countRight, name);
 }
-
-branEven();
