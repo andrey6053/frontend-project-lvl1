@@ -6,13 +6,15 @@ export default function brainProgression() {
    const name = knowName("brain-progression")
    let countRight = 0;
    while (countRight < 3) {
+      let len = Math.floor(Math.random() * (10 - 5) + 5)
+      let index = Math.floor(Math.random() * len)
       let num = randomNumber()
       const arrOfProgression = []
-      let correctNum
-      for (let i = randomNumber(); arrOfProgression.length <= 10; num += i) {
+      for (let i = randomNumber(); arrOfProgression.length <= len; num += i) {
          arrOfProgression.push(num)
-         correctNum = i
       }
+      let correctNum = arrOfProgression[index]
+      arrOfProgression[index] = ".."
       question("brain-progression", arrOfProgression.join(" "));
       let answer = answerQuestion();
       if (isNaN(answer)) { correctAnswer(false, answer, correctNum); break; }
